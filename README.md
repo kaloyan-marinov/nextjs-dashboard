@@ -13,6 +13,11 @@ Install the project's dependencies:
 $ pnpm install
 ```
 
+Start serving the application on (by using a development web server):
+```shell
+$ pnpm dev
+```
+
 
 
 # Next.js App Router Course - Starter
