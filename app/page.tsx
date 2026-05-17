@@ -2,6 +2,7 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { lusitana } from '@/app/ui/fonts';
+import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -30,6 +31,21 @@ export default function Page() {
         </div>
         <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
           {/* Add Hero Images Here */}
+          {/*
+          It's good practice to set the width and height of your images to avoid layout shift,
+          these should be an aspect ratio _identical_ to the source image.
+
+          the class `hidden` = remove the image from the DOM on mobile screens
+          
+          the class `md:block` = show the image on desktop screens
+          */}
+          <Image
+            src='/hero-desktop.png'
+            width={1000}
+            height={760}
+            className="hidden md:block"
+            alt="Screenshots of the dashboard project showing desktop version"
+          />
         </div>
       </div>
     </main>
