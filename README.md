@@ -8,6 +8,13 @@ https://nextjs.org/learn/dashboard-app/getting-started
 
 
 
+Install the project's dependencies:
+```shell
+$ pnpm install
+```
+
+
+
 # Next.js App Router Course - Starter
 
 This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
