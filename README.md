@@ -8,8 +8,26 @@ https://nextjs.org/learn/dashboard-app/getting-started
 
 
 
-## Next.js App Router Course - Starter
+# Next.js App Router Course - Starter
 
 This is the starter template for the Next.js App Router Course. It contains the starting code for the dashboard application.
 
 For more information, see the [course curriculum](https://nextjs.org/learn) on the Next.js Website.
+
+
+
+# Tangentially made remarks, which are actually quite insightful
+
+https://nextjs.org/learn/dashboard-app/getting-started#placeholder-data
+
+When you're building user interfaces, it helps to have some placeholder data. If a database or API is not yet available, you can:
+
+- Use placeholder data in JSON format or as JavaScript objects.
+
+- Use a 3rd party service like [mockAPI](https://mockapi.io/).
+
+---
+
+https://nextjs.org/learn/dashboard-app/getting-started#typescript
+
+we recommend [Prisma](https://www.prisma.io/) or [Drizzle](https://orm.drizzle.team/), which automatically generates types based on your database schema.
