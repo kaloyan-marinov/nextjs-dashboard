@@ -96,3 +96,9 @@ https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-d
 
 By [requiring] a special name for `page` files, Next.js allows you to colocate UI components, test files, and other related code with your routes. Only the content inside the `page` file will be publicly accessible.
 )
+
+---
+
+https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-layout
+
+In Next.js, you can use a special `layout.tsx` file to create UI that is shared between multiple pages. [One example of UI that is shared between multiple pages: buttons/links/controls for navigation.]
