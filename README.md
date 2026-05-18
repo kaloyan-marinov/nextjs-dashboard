@@ -102,3 +102,7 @@ By [requiring] a special name for `page` files, Next.js allows you to colocate U
 https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-layout
 
 In Next.js, you can use a special `layout.tsx` file to create UI that is shared between multiple pages. [One example of UI that is shared between multiple pages: buttons/links/controls for navigation.]
+
+https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-layout
+
+One benefit of using layouts in Next.js is that on navigation, only the page components update while the layout won't re-render. This is called [partial rendering](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering) which preserves client-side React state in the layout when transitioning between pages.
