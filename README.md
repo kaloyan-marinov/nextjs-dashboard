@@ -29,7 +29,7 @@ $ podman container run \
     --env POSTGRES_USER=$(sed -n 's/^POSTGRES_USER=//p' .env) \
     --env POSTGRES_PASSWORD=$(sed -n 's/^POSTGRES_PASSWORD=//p' .env) \
     --env POSTGRES_DB=$(sed -n 's/^POSTGRES_DB=//p' .env) \
-    --publish 5432:5432 \
+    --publish $(sed -n 's/^POSTGRES_PORT=//p' .env):$(sed -n 's/^POSTGRES_PORT=//p' .env) \
     --detach \
     postgres:18.4
 ```
@@ -60,10 +60,13 @@ Password for user <value-of-POSTGRES_USER>:
 psql (18.4 (Debian 18.4-1.pgdg13+1))
 Type "help" for help.
 
-db-name=# pset pager off
+db-name=# \pset pager off
 Pager usage is off.
 
 db-name=# SELECT extname FROM pg_extension WHERE extname = 'uuid-ossp';
+ extname
+---------
+(0 rows)
 
 db-name=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE EXTENSION
@@ -75,10 +78,14 @@ db-name=# SELECT extname FROM pg_extension WHERE extname = 'uuid-ossp';
 (1 row)
 ```
 
-Start serving the application on (by using a development web server):
+
+
+Start serving the application from `localhost` (by using a development web server):
 ```shell
 $ pnpm dev
 ```
+
+Issuing a `GET localhost:3000/seed` request
 
 
 
