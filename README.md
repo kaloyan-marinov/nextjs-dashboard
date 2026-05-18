@@ -90,3 +90,9 @@ You can create separate UIs for each route using `layout.tsx` and `page.tsx` fil
 `page.tsx` is a special Next.js file that exports a React component, and it's required for the route to be accessible.
 
 To create a nested route, you can nest folders inside each other and add `page.tsx` files inside them.
+
+(
+https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-page
+
+By [requiring] a special name for `page` files, Next.js allows you to colocate UI components, test files, and other related code with your routes. Only the content inside the `page` file will be publicly accessible.
+)
