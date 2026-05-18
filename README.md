@@ -108,3 +108,23 @@ https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-d
 One benefit of using layouts in Next.js is that on navigation, only the page components update while the layout won't re-render. This is called [partial rendering](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering) which preserves client-side React state in the layout when transitioning between pages.
 
 `app/layout.tsx` is called a [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts) and is required in every Next.js application. Any UI you add to the root layout will be shared across all pages in your application. You can use the root layout to modify your `<html>` and `<body>` tags, and add metadata...
+
+---
+
+https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts
+
+To link between pages, you'd traditionally use the `<a>` HTML element... but ... what happens when you navigate [using `<a>` tags is that] There's a full page refresh on each page navigation!
+
+https://nextjs.org/learn/dashboard-app/navigating-between-pages#the-link-component
+
+In Next.js, you can use the `<Link />` Component to link between pages in your application. `<Link>` allows you to do [client-side navigation](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#how-routing-and-navigation-works) with JavaScript.
+
+> [That makes it possible] to navigate between the pages without seeing a full refresh. Although parts of your application are rendered on the server, there's no full page refresh, making it feel like a native web app.
+>
+> Why is that?
+>
+> To improve the navigation experience, Next.js <u>automatically code splits</u> your application by route segments. This is different from a traditional React [SPA](https://nextjs.org/docs/app/building-your-application/upgrading/single-page-applications), where the browser loads all your application code on the initial page load.
+>
+> Splitting code by routes means that pages become isolated. If a certain page throws an error, the rest of the application will still work. This is also less code for the browser to parse, which makes your application faster.
+>
+> Furthermore, in production, whenever [`<Link>`](https://nextjs.org/docs/api-reference/next/link) components appear in the browser's viewport, Next.js <u>automatically prefetches</u> the code for the linked route in the background. By the time the user clicks the link, the code for the destination page will already be loaded in the background, and this is what makes the page transition near-instant!
