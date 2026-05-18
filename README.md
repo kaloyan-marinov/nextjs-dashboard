@@ -86,7 +86,26 @@ Start serving the application from `localhost` (by using a development web serve
 $ pnpm dev
 ```
 
-Issuing a `GET localhost:3000/seed` request
+Issue a `GET localhost:3000/seed` request.
+
+Issue one more request:
+```shell
+$ http localhost:3000/query
+HTTP/1.1 200 OK
+Connection: keep-alive
+Date: Mon, 18 May 2026 20:49:00 GMT
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+content-type: application/json
+vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+
+[
+    {
+        "amount": 666,
+        "name": "Evil Rabbit"
+    }
+]
+```
 
 
 
@@ -95,7 +114,8 @@ $ podman volume ls
 DRIVER      VOLUME NAME
 local       volume-db
 
-$ podman volume prune
+$ podman volume rm \
+    volume-db
 ```
 
 
