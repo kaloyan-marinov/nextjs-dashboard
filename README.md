@@ -20,7 +20,7 @@ $ cp \
 
 # Specify values for the environment variables.
 ```
-https://www.perplexity.ai/search/6232de59-bc58-4018-9d03-bdc32cead752
+
 ```shell
 $ podman container run \
     --name container-db \
@@ -29,6 +29,7 @@ $ podman container run \
     --env POSTGRES_USER=$(sed -n 's/^POSTGRES_USER=//p' .env) \
     --env POSTGRES_PASSWORD=$(sed -n 's/^POSTGRES_PASSWORD=//p' .env) \
     --env POSTGRES_DB=$(sed -n 's/^POSTGRES_DB=//p' .env) \
+    --publish 5432:5432 \
     --detach \
     postgres:18.4
 ```
@@ -59,8 +60,19 @@ Password for user <value-of-POSTGRES_USER>:
 psql (18.4 (Debian 18.4-1.pgdg13+1))
 Type "help" for help.
 
-db-name=#
+db-name=# pset pager off
+Pager usage is off.
 
+db-name=# SELECT extname FROM pg_extension WHERE extname = 'uuid-ossp';
+
+db-name=# CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION
+db-name=# SELECT extname FROM pg_extension WHERE extname = 'uuid-ossp';
+# ...
+  extname
+-----------
+ uuid-ossp
+(1 row)
 ```
 
 Start serving the application on (by using a development web server):
