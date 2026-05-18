@@ -128,3 +128,11 @@ In Next.js, you can use the `<Link />` Component to link between pages in your a
 > Splitting code by routes means that pages become isolated. If a certain page throws an error, the rest of the application will still work. This is also less code for the browser to parse, which makes your application faster.
 >
 > Furthermore, in production, whenever [`<Link>`](https://nextjs.org/docs/api-reference/next/link) components appear in the browser's viewport, Next.js <u>automatically prefetches</u> the code for the linked route in the background. By the time the user clicks the link, the code for the destination page will already be loaded in the background, and this is what makes the page transition near-instant!
+
+---
+
+https://nextjs.org/learn/dashboard-app/navigating-between-pages#pattern-showing-active-links
+
+A common UI pattern is to show an active link to indicate to the user what page they are currently on. To do this, you need to get the user's current path from the URL. Next.js provides a hook called [`usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) that you can use to check the path and implement this pattern.
+
+[Since that is a React hook, any React component that uses it needs to be explicitly marked/declared/implemented as a Client Component.]
