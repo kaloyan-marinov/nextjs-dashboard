@@ -20,13 +20,15 @@ $ cp \
 
 # Specify values for the environment variables.
 ```
-
+https://www.perplexity.ai/search/6232de59-bc58-4018-9d03-bdc32cead752
 ```shell
 $ podman container run \
     --name container-db \
     --env POSTGRES_HOST_AUTH_METHOD=scram-sha-256 \
     --env POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 \
-    --env-file .env \
+    --env POSTGRES_USER=$(sed -n 's/^POSTGRES_USER=//p' .env) \
+    --env POSTGRES_PASSWORD=$(sed -n 's/^POSTGRES_PASSWORD=//p' .env) \
+    --env POSTGRES_DB=$(sed -n 's/^POSTGRES_DB=//p' .env) \
     --detach \
     postgres:18.4
 ```
@@ -51,8 +53,14 @@ root@<container-ID>:/# cat /var/lib/postgresql/18/docker/pg_hba.conf
 # troubleshoot how the container was created.
 root@<container-ID>:/# psql \
     --host=localhost \
-    --user=db-user \
-    --dbname=db-name
+    --user=${POSTGRES_USER} \
+    --dbname=${POSTGRES_DB}
+Password for user <value-of-POSTGRES_USER>:
+psql (18.4 (Debian 18.4-1.pgdg13+1))
+Type "help" for help.
+
+db-name=#
+
 ```
 
 Start serving the application on (by using a development web server):
