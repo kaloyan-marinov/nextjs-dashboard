@@ -106,3 +106,5 @@ In Next.js, you can use a special `layout.tsx` file to create UI that is shared 
 https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#creating-the-dashboard-layout
 
 One benefit of using layouts in Next.js is that on navigation, only the page components update while the layout won't re-render. This is called [partial rendering](https://nextjs.org/docs/app/building-your-application/routing/linking-and-navigating#4-partial-rendering) which preserves client-side React state in the layout when transitioning between pages.
+
+`app/layout.tsx` is called a [root layout](https://nextjs.org/docs/app/api-reference/file-conventions/layout#root-layouts) and is required in every Next.js application. Any UI you add to the root layout will be shared across all pages in your application. You can use the root layout to modify your `<html>` and `<body>` tags, and add metadata...
