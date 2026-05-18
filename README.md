@@ -24,6 +24,7 @@ $ cp \
 ```shell
 $ podman container run \
     --name container-db \
+    --volume volume-db:/var/lib/postgresql \
     --env POSTGRES_HOST_AUTH_METHOD=scram-sha-256 \
     --env POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 \
     --env POSTGRES_USER=$(sed -n 's/^POSTGRES_USER=//p' .env) \
@@ -86,6 +87,16 @@ $ pnpm dev
 ```
 
 Issuing a `GET localhost:3000/seed` request
+
+
+
+```shell
+$ podman volume ls
+DRIVER      VOLUME NAME
+local       volume-db
+
+$ podman volume prune
+```
 
 
 
