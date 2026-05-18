@@ -13,6 +13,48 @@ Install the project's dependencies:
 $ pnpm install
 ```
 
+```shell
+$ cp \
+  .env.example \
+  .env
+
+# Specify values for the environment variables.
+```
+
+```shell
+$ podman container run \
+    --name container-db \
+    --env POSTGRES_HOST_AUTH_METHOD=scram-sha-256 \
+    --env POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 \
+    --env-file .env \
+    --detach \
+    postgres:18.4
+```
+
+```shell
+$ podman container logs \
+    --follow \
+    container-db
+```
+
+```shell
+$ podman container exec \
+    -it \
+    container-db \
+    /bin/bash
+
+root@<container-ID>:/# cat /var/lib/postgresql/18/docker/pg_hba.conf
+# Ensure that every row with `TYPE` different from `local` has a `METHOD` equal to `scram-sha-256`.
+
+# If the following does NOT ask for a password
+# or if it accepts an incorrect password,
+# troubleshoot how the container was created.
+root@<container-ID>:/# psql \
+    --host=localhost \
+    --user=db-user \
+    --dbname=db-name
+```
+
 Start serving the application on (by using a development web server):
 ```shell
 $ pnpm dev
