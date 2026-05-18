@@ -78,3 +78,15 @@ The `<Image>` Component is an extension of the HTML `<img>` tag, and comes with 
 - Resizing images to avoid shipping large images to devices with a smaller viewport.
 - Lazy loading images by default (images load as they enter the viewport).
 - Serving images in modern formats, like [WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#webp) and [AVIF](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types#avif_image), when the browser supports it.
+
+---
+
+https://nextjs.org/learn/dashboard-app/creating-layouts-and-pages#nested-routing
+
+Next.js uses file-system routing where **folders** are used to create nested routes. Each folder represents a **route segment** that maps to a **URL segment**.
+
+You can create separate UIs for each route using `layout.tsx` and `page.tsx` files.
+
+`page.tsx` is a special Next.js file that exports a React component, and it's required for the route to be accessible.
+
+To create a nested route, you can nest folders inside each other and add `page.tsx` files inside them.
