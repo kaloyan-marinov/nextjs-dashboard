@@ -252,3 +252,15 @@ Fetching data with Server Components is a relatively new approach and there are 
 - Server Components run on the server, so you can keep expensive data fetches and logic on the server, only sending the result to the client.
 
 - Since Server Components run on the server, you can query the database directly without an additional API layer. This saves you from writing and maintaining additional code.
+
+---
+
+https://nextjs.org/learn/dashboard-app/fetching-data#what-are-request-waterfalls
+
+network waterfalls
+=
+What are request waterfalls?
+
+A "waterfall" refers to a sequence of network requests that depend on the completion of previous requests. In the case of data fetching, each request can only begin once the previous request has returned data.
+
+This pattern is not necessarily bad. There may be cases where you want waterfalls because you want a condition to be satisfied before you make the next request.
