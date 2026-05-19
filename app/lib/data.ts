@@ -64,6 +64,9 @@ export async function fetchCardData() {
          SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
          FROM invoices`;
 
+    // initiate all [HTTP] requests at the same time - in parallel
+    // which is faster than waiting for each request to complete in a waterfall
+    // [and leverages] a native JavaScript pattern that can be applied to any library or framework
     const data = await Promise.all([
       invoiceCountPromise,
       customerCountPromise,
