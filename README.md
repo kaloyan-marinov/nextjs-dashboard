@@ -264,3 +264,31 @@ What are request waterfalls?
 A "waterfall" refers to a sequence of network requests that depend on the completion of previous requests. In the case of data fetching, each request can only begin once the previous request has returned data.
 
 This pattern is not necessarily bad. There may be cases where you want waterfalls because you want a condition to be satisfied before you make the next request.
+
+---
+
+https://nextjs.org/learn/dashboard-app/static-and-dynamic-rendering#what-is-static-rendering
+
+With static rendering, data fetching and rendering happens on the server at build time (when you deploy) or when [revalidating data](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating#revalidating-data).
+
+Whenever a user visits your application, the cached result is served. There are a couple of benefits of static rendering:
+
+- Faster Websites
+
+- Reduced Server Load
+
+- SEO
+
+... useful for UI with **no data** or **data that is shared across users**
+
+---
+
+https://nextjs.org/learn/dashboard-app/static-and-dynamic-rendering#what-is-dynamic-rendering
+
+With dynamic rendering, content is rendered on the server for each user at **request time** (when the user visits the page). There are a couple of benefits of dynamic rendering:
+
+- Real-Time Data
+
+- User-Specific Content
+
+- Request Time Information
