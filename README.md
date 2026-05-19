@@ -292,3 +292,18 @@ With dynamic rendering, content is rendered on the server for each user at **req
 - User-Specific Content
 
 - Request Time Information
+
+---
+
+https://nextjs.org/learn/dashboard-app/streaming
+
+Streaming is a data transfer technique that allows you to break down a route into smaller "chunks" and progressively stream them from the server to the client as they become ready.
+
+By streaming, you can prevent slow data requests from blocking your whole page. This allows the user to see and interact with parts of the page without waiting for all the data to load ...
+
+Streaming works well with React's component model, as each component can be considered a *chunk*.
+
+There are two ways you implement streaming in Next.js:
+
+1. At the page level, with the `loading.tsx` file (which creates `<Suspense>` for you).
+2. At the component level, with `<Suspense>` for more granular control.
