@@ -236,3 +236,19 @@ https://nextjs.org/learn/dashboard-app/navigating-between-pages#pattern-showing-
 A common UI pattern is to show an active link to indicate to the user what page they are currently on. To do this, you need to get the user's current path from the URL. Next.js provides a hook called [`usePathname()`](https://nextjs.org/docs/app/api-reference/functions/use-pathname) that you can use to check the path and implement this pattern.
 
 [Since that is a React hook, any React component that uses it needs to be explicitly marked/declared/implemented as a Client Component.]
+
+---
+
+https://nextjs.org/learn/dashboard-app/fetching-data#choosing-how-to-fetch-data
+
+APIs are an intermediary layer between your application code and database.
+
+When creating your API endpoints, you need to write logic to interact with your database.
+
+Fetching data with Server Components is a relatively new approach and there are a few benefits of using them:
+
+- Server Components support JavaScript Promises, providing a solution for asynchronous tasks like data fetching natively. You can use `async/await` syntax without needing `useEffect`, `useState` or other data fetching libraries.
+
+- Server Components run on the server, so you can keep expensive data fetches and logic on the server, only sending the result to the client.
+
+- Since Server Components run on the server, you can query the database directly without an additional API layer. This saves you from writing and maintaining additional code.
