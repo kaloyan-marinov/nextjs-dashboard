@@ -307,3 +307,21 @@ There are two ways you implement streaming in Next.js:
 
 1. At the page level, with the `loading.tsx` file (which creates `<Suspense>` for you).
 2. At the component level, with `<Suspense>` for more granular control.
+
+---
+
+https://nextjs.org/learn/dashboard-app/streaming#deciding-where-to-place-your-suspense-boundaries
+
+Where you place your Suspense boundaries will depend on a few things:
+
+1. How you want the user to experience the page as it streams.
+2. What content you want to prioritize.
+3. If the components rely on data fetching.
+
+Don't worry. There isn't a right answer.
+
+- You could stream the **whole page** like we did with `loading.tsx`... but that may lead to a longer loading time if one of the components has a slow data fetch.
+- You could stream **every component** individually... but that may lead to UI _popping_ into the screen as it becomes ready.
+- You could also create a _staggered_ effect by streaming **page sections**. But you'll need to create wrapper components.
+
+In general, it's good practice to move your data fetches down to the components that need it...
