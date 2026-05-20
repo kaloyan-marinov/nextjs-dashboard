@@ -17,7 +17,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // thanks to Next.js's client-side navigation.
     const params = new URLSearchParams(searchParams);
 
-    //console.log('term', term);
+    console.log('term', term);
     if (term) {
       params.set('query', term);
     } else {

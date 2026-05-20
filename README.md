@@ -354,3 +354,23 @@ https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#4-updating-t
 > - a Client Component [- use] the `useSearchParams()` hook to access the params from the client
 >
 > - a Server Component that fetches its own data [-] pass the `searchParams` prop from the page to the component
+
+---
+
+https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#best-practice-debouncing
+
+[If] You're updating the URL on every keystroke
+[- it would not be prudent/efficient to query your database on every update to the URL,
+because that would result in]
+querying your database on every keystroke!
+
+**Debouncing** is a programming practice that limits the rate at which a function can fire.
+
+> How Debouncing Works:
+>
+> 1. **Trigger Event**: When an event that should be debounced (like a keystroke in the search box) occurs, a timer starts.
+> 2. **Wait**: If a new event occurs before the timer expires, the timer is reset.
+> 3. **Execution**: If the timer reaches the end of its countdown, the debounced function is executed.
+
+You can implement debouncing in a few ways,
+including manually creating your own debounce function [or] use a library called `use-debounce`.
