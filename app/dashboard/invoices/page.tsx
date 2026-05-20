@@ -13,7 +13,18 @@ When a user searches for an invoice on the client,
   data will be fetched on the server,
   and the table will re-render on the server with the new data.
 */
-export default function Page() {
+/*
+Page components [accept a prop called searchParams](
+  https://nextjs.org/docs/app/api-reference/file-conventions/page
+)
+*/
+export default async function Page(props: {
+  searchParams?: Promise<{ query?: string; page?: string; }>
+}) {
+  const searchParams = await props.searchParams;
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
   return (
     <div className="w-full">
       <div className="flex w-full items-center justify-between">
@@ -23,9 +34,9 @@ export default function Page() {
         <Search placeholder="Search Invoices..." />
         <CreateInvoice />
       </div>
-      {/* <Suspense key={query + currentPage} fallback={InvoicesTableSkeleton}>
+      <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
         <Table query={query} currentPage={currentPage} />
-      </Suspense> */}
+      </Suspense>
       <div className="mt-5 flex w-full justify-center">
         {/* <Pagination totalPages={totalPages} /> */}
       </div>

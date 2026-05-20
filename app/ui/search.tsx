@@ -6,7 +6,7 @@ import { useSearchParams, usePathname, useRouter } from 'next/navigation';
 export default function Search({ placeholder }: { placeholder: string }) {
   // Access the parameters of the current URL.
   const searchParams = useSearchParams();
-  console.log('searchParams', searchParams);
+  //console.log('searchParams', searchParams);
   // Obtain the current URL's pathname.
   const pathname = usePathname();
   // Enables navigation between routes within client components programmatically.
@@ -17,7 +17,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // thanks to Next.js's client-side navigation.
     const params = new URLSearchParams(searchParams);
 
-    console.log('term', term);
+    //console.log('term', term);
     if (term) {
       params.set('query', term);
     } else {
