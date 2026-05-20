@@ -337,3 +337,20 @@ There are a couple of benefits of implementing search with URL params:
 - **Bookmarkable and shareable URLs**: Since the search parameters are in the URL, users can bookmark the current state of the application, including their search queries and filters, for future reference or sharing.
 - **Server-side rendering**: URL parameters can be directly consumed on the server to render the initial state, making it easier to handle server rendering.
 - **Analytics and tracking**: Having search queries and filters directly in the URL makes it easier to track user behavior without requiring additional client-side logic.
+
+---
+
+https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#4-updating-the-table
+
+> Example:
+> 
+> If you search for a term,
+> you'll update the URL,
+> which will send a new request to the server,
+> data will be fetched on the server, and only the invoices that match your query will be returned.
+
+> You might have noticed you used two different ways to extract search params.
+>
+> - a Client Component [- use] the `useSearchParams()` hook to access the params from the client
+>
+> - a Server Component that fetches its own data [-] pass the `searchParams` prop from the page to the component
