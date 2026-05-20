@@ -11,6 +11,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
   // Obtain the current URL's pathname.
   const pathname = usePathname();
   // Enables navigation between routes within client components programmatically.
+  // (which also makes for smoother, client-side transitions).
   const router = useRouter();
 
   // Cause the arrow function, which is passed in as the first parameter,
@@ -19,6 +20,8 @@ export default function Search({ placeholder }: { placeholder: string }) {
     // Update the URL without reloading the page,
     // thanks to Next.js's client-side navigation.
     const params = new URLSearchParams(searchParams);
+
+    params.set('page', '1');
 
     console.log('term', term);
     if (term) {
