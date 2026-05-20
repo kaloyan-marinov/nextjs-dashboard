@@ -325,3 +325,15 @@ Don't worry. There isn't a right answer.
 - You could also create a _staggered_ effect by streaming **page sections**. But you'll need to create wrapper components.
 
 In general, it's good practice to move your data fetches down to the components that need it...
+
+---
+
+https://nextjs.org/learn/dashboard-app/adding-search-and-pagination#why-use-url-search-params
+
+[The pattern of] using URL search params to manage the search state ... may be new [for you] if you're used to doing it with client side state.
+
+There are a couple of benefits of implementing search with URL params:
+
+- **Bookmarkable and shareable URLs**: Since the search parameters are in the URL, users can bookmark the current state of the application, including their search queries and filters, for future reference or sharing.
+- **Server-side rendering**: URL parameters can be directly consumed on the server to render the initial state, making it easier to handle server rendering.
+- **Analytics and tracking**: Having search queries and filters directly in the URL makes it easier to track user behavior without requiring additional client-side logic.
