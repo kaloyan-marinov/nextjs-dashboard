@@ -2,6 +2,7 @@
 
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useDebouncedCallback } from 'use-debounce';
 
 export default function Search({ placeholder }: { placeholder: string }) {
   // Access the parameters of the current URL.
@@ -12,7 +13,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
   // Enables navigation between routes within client components programmatically.
   const router = useRouter();
 
-  function handleSearch(term: string) {
+  // Cause the arrow function, which is passed in as the first parameter,
+  // to run _only 300ms after_ the user has stopped typing.
+  const handleSearch = useDebouncedCallback((term: string) => {
     // Update the URL without reloading the page,
     // thanks to Next.js's client-side navigation.
     const params = new URLSearchParams(searchParams);
@@ -26,7 +29,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
     // Update the URL with the user's search `query`.
     router.replace(`${pathname}?${params.toString()}`);
-  }
+  }, 300);
 
   return (
     <div className="relative flex flex-1 flex-shrink-0">
