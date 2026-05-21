@@ -384,3 +384,15 @@ https://nextjs.org/learn/dashboard-app/mutating-data#2-create-a-server-action
 However, in React, the `action` attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
 
 Behind the scenes, Server Actions create a `POST` API endpoint. This is why you don't need to create API endpoints manually when using Server Actions.
+
+---
+
+https://nextjs.org/learn/dashboard-app/mutating-data#type-validation-and-coercion
+
+Type validation and coercion
+
+It's important to validate that the data from your form aligns with the expected types in your database.
+
+To handle type validation, you have a few options. While you can manually validate types, using a type validation library can save you time and effort. For your example, [one option is to] use [Zod](
+  https://zod.dev/
+), a TypeScript-first validation library that can simplify this task for you.
