@@ -374,3 +374,13 @@ querying your database on every keystroke!
 
 You can implement debouncing in a few ways,
 including manually creating your own debounce function [or] use a library called `use-debounce`.
+
+---
+
+https://nextjs.org/learn/dashboard-app/mutating-data#2-create-a-server-action
+
+**Good to know:** In HTML, you'd pass a URL to the `action` attribute. This URL would be the destination where your form data should be submitted (usually an API endpoint).
+
+However, in React, the `action` attribute is considered a special prop - meaning React builds on top of it to allow actions to be invoked.
+
+Behind the scenes, Server Actions create a `POST` API endpoint. This is why you don't need to create API endpoints manually when using Server Actions.
