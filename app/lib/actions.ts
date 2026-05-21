@@ -11,6 +11,23 @@ But ... We recommend having a separate file for your actions.
 */
 'use server';
 
+import { z } from 'zod';
+
+const FormSchema = z.object({
+    id: z.string(),
+    customerId: z.string(),
+    amount: z.coerce.number(),
+    status: z.enum(['pending', 'paid']),
+    date: z.string(),
+});
+
+const CreateInvoice = FormSchema.omit(
+    {
+        id: true,
+        date: true,
+    }
+)
+
 export async function createInvoice(formData: FormData) {
   /*
   Tip:
@@ -27,5 +44,20 @@ export async function createInvoice(formData: FormData) {
     status: formData.get('status'),
   };
 
-  console.log(rawFormData);
+  console.log('rawFormData', rawFormData);
+  // The next statement will print `string`.
+  // This is because `input` elements with `type="number"` actually return a string, not a number!
+  console.log('typeof rawFormData.amount', typeof rawFormData.amount);
+
+  const {
+    customerId,
+    amount,
+    status,
+  } = CreateInvoice.parse({
+    customerId: rawFormData.customerId,
+    amount: rawFormData.amount,
+    status: rawFormData.status,
+  });
+  // The next statement will print `number`.
+  console.log('typeof amount', typeof amount);
 }
