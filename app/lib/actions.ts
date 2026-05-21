@@ -12,5 +12,20 @@ But ... We recommend having a separate file for your actions.
 'use server';
 
 export async function createInvoice(formData: FormData) {
-  
+  /*
+  Tip:
+  If you're working with forms that have many fields,
+  you may want to consider using the [`entries()`](
+    https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries
+  ) method with JavaScript's [`Object.fromEntries()`](
+    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
+  ).
+  */
+  const rawFormData = {
+    customerId: formData.get('customerId'),
+    amount: formData.get('amount'),
+    status: formData.get('status'),
+  };
+
+  console.log(rawFormData);
 }
