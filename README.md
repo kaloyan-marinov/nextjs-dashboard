@@ -396,3 +396,13 @@ It's important to validate that the data from your form aligns with the expected
 To handle type validation, you have a few options. While you can manually validate types, using a type validation library can save you time and effort. For your example, [one option is to] use [Zod](
   https://zod.dev/
 ), a TypeScript-first validation library that can simplify this task for you.
+
+---
+
+https://nextjs.org/learn/dashboard-app/mutating-data#3-fetch-the-specific-invoice
+
+**UUIDs vs. Auto-incrementing Keys**
+
+We use UUIDs instead of incrementing keys (e.g., 1, 2, 3, etc.). This makes the URL longer; however, UUIDs eliminate the risk of ID collision, are globally unique, and reduce the risk of enumeration attacks - making them ideal for large databases.
+
+However, if you prefer cleaner URLs, you might prefer to use auto-incrementing keys.
