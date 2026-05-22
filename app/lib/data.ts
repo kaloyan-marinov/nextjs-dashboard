@@ -1,3 +1,5 @@
+// Why shouldn't this file's functions be «server actions»?
+
 import postgres from 'postgres';
 import {
   CustomerField,
