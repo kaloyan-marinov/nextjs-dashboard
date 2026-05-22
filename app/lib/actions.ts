@@ -13,6 +13,7 @@ But ... We recommend having a separate file for your actions.
 
 import { z } from 'zod';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 
 const POSTGRES_URL = `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`;
@@ -94,4 +95,6 @@ export async function createInvoice(formData: FormData) {
   // Clear the specified route segment from the cache of Next.js's client-side router (= from the user's browser),
   // which will trigger a new request to the server (for fresh data).
   revalidatePath('/dashboard/invoices');
+  
+  redirect('/dashboard/invoices');
 }
