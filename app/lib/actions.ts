@@ -64,4 +64,7 @@ export async function createInvoice(formData: FormData) {
   // It's usually good practice to store monetary values in cents in your database
   // to eliminate JavaScript floating-point errors and ensure greater accuracy.
   const amountInCents = amount * 100;
+  
+  const date = new Date();
+  const dateStr = date.toISOString().split('T')[0];
 }
