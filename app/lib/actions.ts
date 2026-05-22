@@ -12,6 +12,11 @@ But ... We recommend having a separate file for your actions.
 'use server';
 
 import { z } from 'zod';
+import postgres from 'postgres';
+
+const POSTGRES_URL = `postgresql://${process.env.POSTGRES_USER}:${process.env.POSTGRES_PASSWORD}@${process.env.POSTGRES_HOST}:${process.env.POSTGRES_PORT}/${process.env.POSTGRES_DB}`;
+
+const sql = postgres(POSTGRES_URL);
 
 const FormSchema = z.object({
     id: z.string(),
@@ -67,4 +72,21 @@ export async function createInvoice(formData: FormData) {
   
   const date = new Date();
   const dateStr = date.toISOString().split('T')[0];
+
+  // Right now, we're not handling any errors.
+  // We will address that soon.
+  await sql`
+    INSERT INTO invoices (
+      customer_id,
+      amount,
+      status,
+      date
+    )
+    VALUES (
+      ${customerId},
+      ${amountInCents},
+      ${status},
+      ${dateStr}
+    )
+  `;
 }
