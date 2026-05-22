@@ -60,4 +60,8 @@ export async function createInvoice(formData: FormData) {
   });
   // The next statement will print `number`.
   console.log('typeof amount', typeof amount);
+
+  // It's usually good practice to store monetary values in cents in your database
+  // to eliminate JavaScript floating-point errors and ensure greater accuracy.
+  const amountInCents = amount * 100;
 }
