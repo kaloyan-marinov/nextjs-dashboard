@@ -82,13 +82,16 @@ export async function createInvoice(formData: FormData) {
   // Right now, we're not handling any errors.
   // We will address that soon.
   await sql`
-    INSERT INTO invoices (
+    INSERT INTO
+      invoices
+    (
       customer_id,
       amount,
       status,
       date
     )
-    VALUES (
+    VALUES
+    (
       ${customerId},
       ${amountInCents},
       ${status},
@@ -120,7 +123,8 @@ export async function updateInvoice(id: string, formData: FormData) {
   const amountInCents = amount * 100;
 
   await sql`
-    UPDATE invoices
+    UPDATE
+      invoices
     SET
       customer_id=${customerId},
       amount=${amountInCents},
@@ -132,4 +136,16 @@ export async function updateInvoice(id: string, formData: FormData) {
   revalidatePath('/dashboard/invoices');
 
   redirect('/dashboard/invoices');
+}
+
+export async function deleteInvoice(id: string) {
+  await sql`
+    DELETE FROM
+      invoices
+    WHERE
+      id = ${id}
+    ;
+  `;
+
+  revalidatePath('/dashboard/invoices');
 }
