@@ -93,7 +93,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             Set the invoice status
           </legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
-            <div className="flex gap-4">
+            <div aria-describedby="status-error" className="flex gap-4">
               <div className="flex items-center">
                 <input
                   id="pending"
@@ -127,6 +127,15 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             </div>
           </div>
         </fieldset>
+        <div id="status-error" aria-live="polite" aria-atomic="true">
+          {state.errors?.status &&
+            state.errors.status.map((error: string) => (
+              <p className="mt-2 text-sm text-red-500" key={error}>
+                {error}
+              </p>
+            ))
+          }
+        </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
         <Link
