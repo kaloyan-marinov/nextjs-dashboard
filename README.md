@@ -430,3 +430,15 @@ Accessibility refers to designing and implementing web applications that everyon
 https://nextjs.org/learn/dashboard-app/improving-accessibility#using-the-eslint-accessibility-plugin-in-nextjs
 
 While adding and configuring a linter is not a required step, it can be helpful to catch accessibility issues in your development process.
+
+---
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#improving-form-accessibility
+
+There are three things we're already doing to improve accessibility in our forms:
+
+- **Semantic HTML**: Using semantic elements (`<input>`, `<option>`, etc) instead of `<div>`. This allows assistive technologies (AT) to focus on the input elements and provide appropriate contextual information to the user, making the form easier to navigate and understand.
+
+- **Labelling**: Including `<label>` and the `htmlFor` attribute ensures that each form field has a descriptive text label. This improves AT support by providing context and also enhances usability by allowing users to click on the label to focus on the corresponding input field.
+
+- **Focus Outline**: The fields are properly styled to show an outline when they are in focus. This is critical for accessibility as it visually indicates the active element on the page, helping both keyboard and screen reader users to understand where they are on the form. You can verify this by pressing `tab`.
