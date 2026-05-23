@@ -424,13 +424,3 @@ That's something to keep in mind, `notFound` will take precedence over `error.ts
 https://nextjs.org/learn/dashboard-app/improving-accessibility#what-is-accessibility
 
 Accessibility refers to designing and implementing web applications that everyone can use, including those with disabilities. It's a vast topic that covers many areas, such as keyboard navigation, semantic HTML, images, colors, videos, etc.
-
----
-
-If there are no linting errors, ESLint will complete without any output.
-
-```shell
-$ pnpm lint
-$ eslint .
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-```
