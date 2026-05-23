@@ -9,7 +9,8 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { updateInvoice } from '@/app/lib/actions';
+import { updateInvoice, State } from '@/app/lib/actions';
+import { useActionState } from 'react';
 
 export default function EditInvoiceForm({
   invoice,
@@ -18,6 +19,10 @@ export default function EditInvoiceForm({
   invoice: InvoiceForm;
   customers: CustomerField[];
 }) {
+  const initialState: State = {
+    errors: {},
+    message: null,
+  };
   // This will ensure that any values passed to the Server Action are encoded.
   // (
   // Note:
@@ -26,9 +31,13 @@ export default function EditInvoiceForm({
   // However, the values will appear as full text in the HTML source,
   // which is not ideal for sensitive data.
   const updateInvoiceWithId = updateInvoice.bind(null, invoice.id);
+  const [state, formAction] = useActionState(updateInvoiceWithId, initialState);
+
+  // TODO: (2026/05/23, 21:51 UTC) augment the returned JSX (a) so as to display any errors in the component; (b) with aria labels;
+  //                               (analogously to `app/ui/invoices/create-form.tsx`)
 
   return (
-    <form action={updateInvoiceWithId}>
+    <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
