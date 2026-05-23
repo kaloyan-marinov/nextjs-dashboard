@@ -79,25 +79,31 @@ export async function createInvoice(formData: FormData) {
   const date = new Date();
   const dateStr = date.toISOString().split('T')[0];
 
-  // Right now, we're not handling any errors.
-  // We will address that soon.
-  await sql`
-    INSERT INTO
-      invoices
-    (
-      customer_id,
-      amount,
-      status,
-      date
-    )
-    VALUES
-    (
-      ${customerId},
-      ${amountInCents},
-      ${status},
-      ${dateStr}
-    )
-  `;
+  try {
+    await sql`
+      INSERT INTO
+        invoices
+      (
+        customer_id,
+        amount,
+        status,
+        date
+      )
+      VALUES
+      (
+        ${customerId},
+        ${amountInCents},
+        ${status},
+        ${dateStr}
+      )
+    `;
+  } catch (error) {
+    // We'll also log the error to the console for now.
+    console.error(error);
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
 
   // Clear the specified route segment from the cache of Next.js's client-side router (= from the user's browser),
   // which will trigger a new request to the server (for fresh data).
@@ -122,16 +128,24 @@ export async function updateInvoice(id: string, formData: FormData) {
 
   const amountInCents = amount * 100;
 
-  await sql`
-    UPDATE
-      invoices
-    SET
-      customer_id=${customerId},
-      amount=${amountInCents},
-      status=${status}
-    WHERE
-      id = ${id}
-  `;
+  try {
+    await sql`
+      UPDATE
+        invoices
+      SET
+        customer_id=${customerId},
+        amount=${amountInCents},
+        status=${status}
+      WHERE
+        id = ${id}
+    `;
+  } catch (error) {
+    // We'll also log the error to the console for now.
+    console.error(error);
+    return {
+      message: 'Database Error: Failed to Update Invoice.',
+    };
+  }
 
   revalidatePath('/dashboard/invoices');
 
