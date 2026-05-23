@@ -445,6 +445,10 @@ There are three things we're already doing to improve accessibility in our forms
 
 ---
 
+https://nextjs.org/learn/dashboard-app/improving-accessibility
+
+... the React `useActionState` hook [=] to handle form errors, and display them to the user.
+
 https://nextjs.org/learn/dashboard-app/improving-accessibility#form-validation
 
 Go to http://localhost:3000/dashboard/invoices/create, and submit an empty form. What happens?
@@ -458,3 +462,11 @@ The simplest would be to rely on the form validation provided by the browser by 
 Trying to submitting the form with missing values causes the browser to display a warning
 
 This approach is generally okay because some Assistive Technologies support browser validation.
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#server-side-validation
+
+[Remarks about] adding the following aria labels:
+
+- `aria-describedby="customer-error"`: This establishes a relationship between the `select` element and the error message container. It indicates that the container with `id="customer-error"` describes the `select` element. Screen readers will read this description when the user interacts with the `select` box to notify them of errors.
+- `id="customer-error"`: This `id` attribute uniquely identifies the HTML element that holds the error message for the `select` input. This is necessary for `aria-describedby` to establish the relationship.
+- `aria-live="polite"`: The screen reader should politely notify the user when the error inside the div is updated. When the content changes (e.g. when a user corrects an error), the screen reader will announce these changes, but only when the user is idle so as not to interrupt them.
