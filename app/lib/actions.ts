@@ -153,14 +153,6 @@ export async function updateInvoice(id: string, formData: FormData) {
 }
 
 export async function deleteInvoice(id: string) {
-  // The following statement causes an error to get rendered on `localhost`.
-  //
-  // [In] a production [deployment of the application],
-  // [it makes for an arguably better user experience]
-  // to more gracefully show a message to the user when something unexpected happens.
-  // This is where Next.js `error.tsx` file comes in.
-  throw new Error('SIMULATED Database Error: Failed to Delete Invoice');
-
   await sql`
     DELETE FROM
       invoices
