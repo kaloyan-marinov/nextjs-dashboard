@@ -406,3 +406,15 @@ https://nextjs.org/learn/dashboard-app/mutating-data#3-fetch-the-specific-invoic
 We use UUIDs instead of incrementing keys (e.g., 1, 2, 3, etc.). This makes the URL longer; however, UUIDs eliminate the risk of ID collision, are globally unique, and reduce the risk of enumeration attacks - making them ideal for large databases.
 
 However, if you prefer cleaner URLs, you might prefer to use auto-incrementing keys.
+
+---
+
+https://nextjs.org/learn/dashboard-app/error-handling#handling-all-errors-with-errortsx
+
+The `error.tsx` file can be used to define a UI boundary for a route segment. It serves as a **catch-all** for unexpected errors and allows you to display a fallback UI to your users.
+
+---
+
+https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function
+
+That's something to keep in mind, `notFound` will take precedence over `error.tsx`, so you can reach out for it when you want to handle more specific errors!

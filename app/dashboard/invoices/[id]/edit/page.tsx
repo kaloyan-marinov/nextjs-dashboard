@@ -15,6 +15,8 @@ export default async function Page(props: {
   ]);
 
   if (!invoice) {
+    // `notFound` will take precedence over `error.tsx`,
+    // so you can reach out for it when you want to handle more specific errors!
     notFound();
   }
 
