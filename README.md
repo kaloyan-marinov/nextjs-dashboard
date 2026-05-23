@@ -418,3 +418,9 @@ The `error.tsx` file can be used to define a UI boundary for a route segment. It
 https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function
 
 That's something to keep in mind, `notFound` will take precedence over `error.tsx`, so you can reach out for it when you want to handle more specific errors!
+
+---
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#what-is-accessibility
+
+Accessibility refers to designing and implementing web applications that everyone can use, including those with disabilities. It's a vast topic that covers many areas, such as keyboard navigation, semantic HTML, images, colors, videos, etc.
