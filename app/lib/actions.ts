@@ -21,11 +21,18 @@ const POSTGRES_URL = `postgresql://${process.env.POSTGRES_USER}:${process.env.PO
 const sql = postgres(POSTGRES_URL);
 
 const FormSchema = z.object({
-    id: z.string(),
-    customerId: z.string(),
-    amount: z.coerce.number(),
-    status: z.enum(['pending', 'paid']),
-    date: z.string(),
+  id: z.string(),
+  customerId: z.string({
+    invalid_type_error: 'Please select a customer.',
+  }),
+  // If the string for `amount` is empty, the type coercion will default to zero.
+  amount: z.coerce
+    .number()
+    .gt(0, { message: 'Please enter an amount greater than $0.' }),
+  status: z.enum(['pending', 'paid'], {
+    invalid_type_error: 'Please select an invoice status.',
+  }),
+  date: z.string(),
 });
 
 const CreateInvoice = FormSchema.omit(
@@ -42,7 +49,21 @@ const UpdateInvoice = FormSchema.omit(
   }
 );
 
-export async function createInvoice(formData: FormData) {
+export type State = {
+  errors?: {
+    customerId?: string[];
+    amount?: string[];
+    status?: string[];
+  };
+  message?: string | null;
+};
+
+export async function createInvoice(prevState: State, formData: FormData) {
+  /*
+  `prevState` contains the state passed from the `useActionState` hook.
+  [It won't be used] in [the current function], but it's a required prop[/input].
+  */
+
   /*
   Tip:
   If you're working with forms that have many fields,
@@ -64,21 +85,40 @@ export async function createInvoice(formData: FormData) {
   console.log('typeof rawFormData.amount', typeof rawFormData.amount);
 
   // Validate the types with Zod.
-  const {
+  // The returned object will contain either a `success` or `error` field.
+  const validatedFields = CreateInvoice.safeParse(rawFormData);
+  /*
+  // Tip: submit an empty form and see what the next statement prints.
+  console.log('validatedFields', validatedFields);  // validatedFields { success: false, error: [Getter] }
+  */
+
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing fields. Failed to Create Invoice.',
+    };
+  }
+
+  // Prepare data for insertion into the database.
+  console.log('validatedFields', validatedFields);  // TODO: (2026/05/23, 21:07 UTC) record the value & put inside a block comment - just as it is done above
+  const { 
     customerId,
     amount,
-    status,
-  } = CreateInvoice.parse(rawFormData);
+    status
+  } = validatedFields.data;
+  /*
   // The next statement will print `number`.
   console.log('typeof amount', typeof amount);
 
   // It's usually good practice to store monetary values in cents in your database
   // to eliminate JavaScript floating-point errors and ensure greater accuracy.
+  */
   const amountInCents = amount * 100;
   
   const date = new Date();
   const dateStr = date.toISOString().split('T')[0];
 
+  // Insert a record into the database.
   try {
     await sql`
       INSERT INTO
@@ -98,8 +138,8 @@ export async function createInvoice(formData: FormData) {
       )
     `;
   } catch (error) {
-    // We'll also log the error to the console for now.
-    console.error(error);
+    // If a database error occurs, return a more specific error.
+    console.error('error', error);
     return {
       message: 'Database Error: Failed to Create Invoice.',
     };
