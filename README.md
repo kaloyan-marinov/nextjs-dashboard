@@ -450,3 +450,11 @@ https://nextjs.org/learn/dashboard-app/improving-accessibility#form-validation
 Go to http://localhost:3000/dashboard/invoices/create, and submit an empty form. What happens?
 
 You get an error! This is because you're sending empty form values to your Server Action. You can prevent this by validating your form on the client or the server.
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#client-side-validation
+
+The simplest would be to rely on the form validation provided by the browser by adding the required attribute to the `<input>` and `<select>` elements in your forms
+
+Trying to submitting the form with missing values causes the browser to display a warning
+
+This approach is generally okay because some Assistive Technologies support browser validation.
