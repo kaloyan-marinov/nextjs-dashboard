@@ -424,3 +424,9 @@ That's something to keep in mind, `notFound` will take precedence over `error.ts
 https://nextjs.org/learn/dashboard-app/improving-accessibility#what-is-accessibility
 
 Accessibility refers to designing and implementing web applications that everyone can use, including those with disabilities. It's a vast topic that covers many areas, such as keyboard navigation, semantic HTML, images, colors, videos, etc.
+
+---
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#using-the-eslint-accessibility-plugin-in-nextjs
+
+While adding and configuring a linter is not a required step, it can be helpful to catch accessibility issues in your development process.
