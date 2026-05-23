@@ -424,3 +424,17 @@ That's something to keep in mind, `notFound` will take precedence over `error.ts
 https://nextjs.org/learn/dashboard-app/improving-accessibility#what-is-accessibility
 
 Accessibility refers to designing and implementing web applications that everyone can use, including those with disabilities. It's a vast topic that covers many areas, such as keyboard navigation, semantic HTML, images, colors, videos, etc.
+
+
+```shell
+$ pnpm lint
+Lockfile is up to date, resolution step is skipped
+Already up to date
+[ERR_PNPM_IGNORED_BUILDS] Ignored build scripts: unrs-resolver@1.12.2
+
+Run "pnpm approve-builds" to pick which dependencies should be allowed to run scripts.
+[ERROR] Command failed with exit code 1: pnpm install
+
+pnpm: Command failed with exit code 1: pnpm install
+# ...
+```
