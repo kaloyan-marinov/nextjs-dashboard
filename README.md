@@ -442,3 +442,11 @@ There are three things we're already doing to improve accessibility in our forms
 - **Labelling**: Including `<label>` and the `htmlFor` attribute ensures that each form field has a descriptive text label. This improves AT support by providing context and also enhances usability by allowing users to click on the label to focus on the corresponding input field.
 
 - **Focus Outline**: The fields are properly styled to show an outline when they are in focus. This is critical for accessibility as it visually indicates the active element on the page, helping both keyboard and screen reader users to understand where they are on the form. You can verify this by pressing `tab`.
+
+---
+
+https://nextjs.org/learn/dashboard-app/improving-accessibility#form-validation
+
+Go to http://localhost:3000/dashboard/invoices/create, and submit an empty form. What happens?
+
+You get an error! This is because you're sending empty form values to your Server Action. You can prevent this by validating your form on the client or the server.
