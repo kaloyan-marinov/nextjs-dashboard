@@ -12,8 +12,24 @@ export const authConfig = {
     signIn: '/login',
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    /*
+    The following function is used to verify if the request is authorized to access a page with [Next.js Proxy](
+      https://nextjs.org/docs/app/api-reference/file-conventions/proxy
+    ).
+
+    It is called before a request is completed,
+    and it receives an object with the destructured properties.
+    (
+    The `auth` property contains the user's session,
+    and the `request` property contains the incoming request.
+    )
+    */
+    authorized({
+      auth,
+      request: { nextUrl },
+    }) {
       const isLoggedIn = !!auth?.user;
+
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
       if (isOnDashboard) {
         if (isLoggedIn) return true;
@@ -21,8 +37,12 @@ export const authConfig = {
       } else if (isLoggedIn) {
         return Response.redirect(new URL('/dashboard', nextUrl));
       }
+      
       return true;
     },
   },
-  providers: [], // Add providers with an empty array for now
+  /*
+  The following array specifies different login options.
+  */
+  providers: [],
 } satisfies NextAuthConfig;
