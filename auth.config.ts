@@ -8,6 +8,7 @@ but [the next statement causes] the user [to] be redirected to our custom login 
 rather than the NextAuth.js default page.
 */
 export const authConfig = {
+  providers: [],
   pages: {
     signIn: '/login',
   },
