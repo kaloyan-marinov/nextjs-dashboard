@@ -540,3 +540,17 @@ There are various types of metadata, each serving a unique purpose. Some common 
 ```html
 <link rel="icon" href="path/to/favicon.ico" />
 ```
+
+---
+
+https://nextjs.org/learn/dashboard-app/adding-metadata#adding-metadata
+
+Next.js has a Metadata API that can be used to define your application metadata. There are two ways you can add metadata to your application:
+
+- **Config-based:** ...
+
+- **File-based:** ...
+
+You have the flexibility to use these files for static metadata, or you can generate them programmatically within your project.
+
+With both these options, Next.js will automatically generate the relevant `<head>` elements for your pages.
