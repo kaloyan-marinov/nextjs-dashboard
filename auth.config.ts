@@ -28,6 +28,13 @@ export const authConfig = {
       auth,
       request: { nextUrl },
     }) {
+      // Explicitly convert the optional user object to a boolean -
+      // by using «the dobule bang operator» aka «the double NOT operator» in JavaScript/TypeScript.
+      // (
+      // Recall:
+      // The `?.` is «optional chaining» —
+      // it safely accesses `user` without throwing an error if `auth` is `null`/`undefined`.
+      // )
       const isLoggedIn = !!auth?.user;
 
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
