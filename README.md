@@ -490,3 +490,9 @@ How to use Proxy to redirect users and protect your routes.
 https://nextjs.org/learn/dashboard-app/adding-authentication#password-hashing
 
 It's good practice to **hash** passwords before storing them in a database. Hashing converts a password into a fixed-length string of characters, which appears random, providing a layer of security even if the user's data is exposed.
+
+---
+
+https://nextjs.org/learn/dashboard-app/adding-metadata#what-is-metadata
+
+In web development, metadata provides additional details about a webpage. Metadata is not visible to the users visiting the page. Instead, it works behind the scenes, embedded within the page's HTML, usually within the `<head>` element. This hidden information is crucial for search engines and other systems that need to understand your webpage's content better.
