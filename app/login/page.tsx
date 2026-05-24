@@ -11,9 +11,9 @@ export default function LoginPage() {
             <AcmeLogo />
           </div>
         </div>
-        <Suspense>
+        {/* <Suspense> */}
           <LoginForm />
-        </Suspense>
+        {/* </Suspense> */}
       </div>
     </main>
   );
